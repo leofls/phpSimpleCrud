@@ -7,10 +7,13 @@ include_once 'includes/header.php';
 
 // select
 if(isset($_GET['id'])){
-    $id = mysqli_escape_string($conect, $_GET['id']);
+    // $id = mysqli_escape_string($conect, $_GET['id']);
+    $id = pg_escape_string($conect, $_GET['id']);
     $sql = "SELECT * FROM clientes WHERE id='$id'";
-    $resultado = mysqli_query($conect, $sql);
-    $dados = mysqli_fetch_array($resultado);
+    // $resultado = mysqli_query($conect, $sql);
+    // $dados = mysqli_fetch_array($resultado);
+    $resultado = pg_query($conect, $sql);
+    $dados = pg_fetch_array($resultado);
 
 }
 ?>

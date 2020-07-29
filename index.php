@@ -24,9 +24,12 @@ include_once 'includes/menssage.php';
             <tbody>
                 <?php
                 $sql = "SELECT * FROM clientes";
-                $resultado = mysqli_query($conect, $sql);
-                if(mysqli_num_rows($resultado)>0):
-                while ($dados = mysqli_fetch_array($resultado)) :
+                // $resultado = mysqli_query($conect, $sql);
+                $resultado = pg_query($conect, $sql);
+                // if(mysqli_num_rows($resultado)>0):
+                if(pg_num_rows($resultado)>0):
+                // while ($dados = mysqli_fetch_array($resultado)) :
+                while ($dados = pg_fetch_array($resultado)) :
                 ?>
                     <tr>
                         <td><?php echo $dados['nome']; ?></td>
